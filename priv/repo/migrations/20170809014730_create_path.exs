@@ -3,11 +3,10 @@ defmodule Documentr2.Repo.Migrations.CreatePath do
 
   def change do
     create table(:paths) do
-      add :api_id, :string
+      add :api_id, references(:apis)
       add :route, :string
 
       timestamps()
     end
-
   end
 end

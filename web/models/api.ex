@@ -4,7 +4,7 @@ defmodule Documentr2.Api do
   schema "apis" do
     field :basePath, :string
     field :definitions, :string
-    has_many :paths, Documentr2.Path, foreign_key: :apis_id
+    has_many :paths, Documentr2.Path
 
     timestamps()
   end
