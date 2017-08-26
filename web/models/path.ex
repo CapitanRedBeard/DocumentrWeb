@@ -1,6 +1,7 @@
 defmodule Documentr2.Path do
   use Documentr2.Web, :model
 
+  @derive {Poison.Encoder, only: [:route]}
   schema "paths" do
     belongs_to :api, Documentr2.Api
     field :route, :string
