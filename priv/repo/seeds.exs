@@ -18,9 +18,9 @@ api = Repo.insert! %Api{
     definitions: "none",
 }
 
-IO.inspect Ecto.assoc(api, :paths) |> Repo.all
-Repo.insert! %Path{api_id: api.id, route: "/account"}
-IO.inspect Ecto.assoc(api, :paths) |> Repo.all
+# IO.inspect Ecto.assoc(api, :paths) |> Repo.all
+Repo.insert! %Path{api_id: api.id, route: "/account", description: "This does something", produces: "application/json"}
+# IO.inspect Ecto.assoc(api, :paths) |> Repo.all
 
 
 # api = %Api{

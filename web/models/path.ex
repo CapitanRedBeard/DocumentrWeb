@@ -5,6 +5,8 @@ defmodule Documentr2.Path do
   schema "paths" do
     belongs_to :api, Documentr2.Api
     field :route, :string
+    field :description, :string
+    field :produces, :string
 
     timestamps()
   end
