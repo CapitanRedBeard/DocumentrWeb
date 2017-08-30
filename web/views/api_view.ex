@@ -41,9 +41,8 @@ defmodule Documentr2.ApiView do
     |> Map.get(:paths)
   end
 
-  def get_route(path) do
-    path
-    |> Map.get(:route)
+  def get_method_class(type) do
+    "method #{type}"
   end
 
 end

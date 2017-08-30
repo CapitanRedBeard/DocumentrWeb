@@ -1,0 +1,3 @@
+<div class="<%= get_method_class(@method) %>">
+  <p class="text"><%= @method %><p/>
+</div>

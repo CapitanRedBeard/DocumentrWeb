@@ -7,6 +7,7 @@ defmodule Documentr2.Path do
     field :route, :string
     field :description, :string
     field :produces, :string
+    field :type, :string
 
     timestamps()
   end

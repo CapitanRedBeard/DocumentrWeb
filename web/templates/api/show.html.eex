@@ -3,5 +3,6 @@
   <p><%= @api.basePath %></p>
   <%= for path <- get_paths(@api) do %>
     <p><%= path.route%></p>
+    <%= render "method_icon.html", method: path.type %>
   <% end %>
 </div>
