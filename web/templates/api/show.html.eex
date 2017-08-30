@@ -1,0 +1,7 @@
+<div class="jumbotron">
+  <h3><%= side_bar_title() %></h3>
+  <p><%= @api.basePath %></p>
+  <%= for path <- get_paths(@api) do %>
+    <p><%= path.route%></p>
+  <% end %>
+</div>

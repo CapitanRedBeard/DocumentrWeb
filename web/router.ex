@@ -20,11 +20,17 @@ defmodule Documentr2.Router do
   end
 
 
-    scope "/api", Documentr2 do
-      pipe_through :api
+  # scope "/api", Documentr2 do
+  #   pipe_through :api
+  #
+  #   resources "/", ApiController, only: [:index]
+  # end
 
-      resources "/", ApiController, only: [:index]
-    end
+  scope "/api", Documentr2 do
+    pipe_through :browser
+
+    resources "/", ApiController, only: [:index, :show]
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", Documentr2 do
