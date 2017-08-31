@@ -2,8 +2,8 @@
   <h3><%= definition_title() %></h3>
   <%= for path <- get_paths(@api) do %>
     <div class="jumbotron <%= get_definition_container_class(path.type) %>">
-      <h3><%= path.type %> - <%=path.route%> (<%=path.produces%>)</h3>
-      <p>Description: <%= path.description%></p>
+      <h3 name="<%= path.id%>"><%= path.type %> - <%=path.route%> (<%=path.produces%>)</h3>
+      <p><%= path.description%></p>
       <table>
         <thead>
           <tr>
@@ -20,6 +20,7 @@
           <% end %>
         </tbody>
       </table>
+
       <table>
         <thead>
           <tr>
@@ -32,6 +33,23 @@
             <tr>
               <td><%= parameter.key%></td>
               <td><%= parameter.type%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Returns</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= for return <- get_returns(path) do %>
+            <tr>
+              <td><%= return.key%></td>
+              <td><%= return.type%></td>
             </tr>
           <% end %>
         </tbody>

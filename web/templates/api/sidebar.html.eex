@@ -3,7 +3,7 @@
   <%= for path <- get_paths(@api) do %>
     <div class="sidebar-row">
       <%= render "method_icon.html", method: path.type %>
-      <p class="sidebar-row-route"><%= path.route%></p>
+      <a href="#<%= path.id%>" class="sidebar-row-route"><%= path.route%></a>
     </div>
   <% end %>
 </div>

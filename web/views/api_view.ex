@@ -31,12 +31,22 @@ defmodule Documentr2.ApiView do
     |> Map.get(:parameters)
   end
 
+  def get_returns(path) do
+    path
+    |> Documentr2.Repo.preload(:returns)
+    |> Map.get(:returns)
+  end
+
   def get_method_class(type) do
     "method #{type}"
   end
 
   def get_definition_container_class(type) do
     "#{type}"
+  end
+
+  def has_value(dict, field) do
+    Map.has_key?(dict, field)
   end
 
 end

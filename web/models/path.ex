@@ -10,6 +10,7 @@ defmodule Documentr2.Path do
     field :type, :string
     has_many :responses, Documentr2.Responses
     has_many :parameters, Documentr2.Parameter
+    has_many :returns, Documentr2.Parameter
 
     timestamps()
   end

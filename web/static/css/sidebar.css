@@ -1,12 +1,10 @@
 .sidebar {
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 400px;
-  margin-right: 20px;
   padding: 10px;
   border-width: 5px solid red;
-  border: 2px solid #bbb;
-  border-radius: 5px;
 }
 
 .sidebar-row  {
