@@ -8,6 +8,8 @@ defmodule Documentr2.Path do
     field :description, :string
     field :produces, :string
     field :type, :string
+    has_many :responses, Documentr2.Responses
+    has_many :parameters, Documentr2.Parameter
 
     timestamps()
   end
