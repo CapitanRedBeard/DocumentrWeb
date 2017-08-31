@@ -1,0 +1,9 @@
+<div class="sidebar">
+  <h3><%= side_bar_title() %></h3>
+  <%= for path <- get_paths(@api) do %>
+    <div class="sidebar-row">
+      <%= render "method_icon.html", method: path.type %>
+      <p class="sidebar-row-route"><%= path.route%></p>
+    </div>
+  <% end %>
+</div>

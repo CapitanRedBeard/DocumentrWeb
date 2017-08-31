@@ -1,0 +1,26 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-right: 20px;
+  padding: 10px;
+  border-width: 5px solid red;
+  border: 2px solid #bbb;
+  border-radius: 5px;
+}
+
+.sidebar-row  {
+  margin: 5px;
+  display: flex;
+  transition: all .2s
+}
+
+.sidebar-row:hover  {
+  margin-left: 10px
+}
+
+.sidebar-row-route {
+  font-size: 16px;
+  display: inline-block;
+  margin-left: 10px;
+}

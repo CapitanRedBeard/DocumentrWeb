@@ -1,0 +1,71 @@
+.definitions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.definitions .jumbotron {
+  padding: 10px;
+}
+
+.definitions .jumbotron h3 {
+  padding: 10px;
+  margin-top: 0px;
+  text-align: left;
+}
+
+.definitions .jumbotron.get {
+  border: 2px solid #4BAA56;
+  background-color: rgba(75, 170, 86, 0.5);
+}
+
+.definitions .jumbotron.get td {
+  border-right: 1px solid #4BAA56;
+	border-left: 1px solid #4BAA56;
+	border-top: 1px solid #4BAA56;
+	border-bottom: 1px solid #4BAA56;
+}
+
+.definitions .jumbotron.put {
+  border: 2px solid #3366FF;
+  background-color: rgba(51, 102, 255, 0.5);
+}
+
+.definitions .jumbotron.put td {
+  border-right: 1px solid #3366FF;
+	border-left: 1px solid #3366FF;
+	border-top: 1px solid #3366FF;
+	border-bottom: 1px solid #3366FF;
+}
+
+.definitions .jumbotron.post {
+  border: 2px solid #D39700;
+  background-color: rgba(211, 151, 0, 0.5);
+}
+
+.definitions .jumbotron.post td {
+  border-right: 1px solid #D39700;
+	border-left: 1px solid #D39700;
+	border-top: 1px solid #D39700;
+	border-bottom: 1px solid #D39700;
+}
+
+.definitions .jumbotron.delete {
+  border: 2px solid #CC3300;
+  background-color: rgba(204, 51, 0, 0.5);
+}
+
+.definitions .jumbotron.delete td {
+  border-right: 1px solid #CC3300;
+	border-left: 1px solid #CC3300;
+	border-top: 1px solid #CC3300;
+	border-bottom: 1px solid #CC3300;
+}
+
+.definitions .jumbotron table {
+	text-align: left;
+}
+
+.definitions .jumbotron td {
+	padding: 10px 15px;
+}
