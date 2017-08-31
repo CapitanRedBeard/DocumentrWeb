@@ -21,9 +21,9 @@
 
 .definitions .jumbotron.get td {
   border-right: 1px solid #4BAA56;
-	border-left: 1px solid #4BAA56;
-	border-top: 1px solid #4BAA56;
-	border-bottom: 1px solid #4BAA56;
+  border-left: 1px solid #4BAA56;
+  border-top: 1px solid #4BAA56;
+  border-bottom: 1px solid #4BAA56;
 }
 
 .definitions .jumbotron.put {
@@ -33,9 +33,9 @@
 
 .definitions .jumbotron.put td {
   border-right: 1px solid #3366FF;
-	border-left: 1px solid #3366FF;
-	border-top: 1px solid #3366FF;
-	border-bottom: 1px solid #3366FF;
+  border-left: 1px solid #3366FF;
+  border-top: 1px solid #3366FF;
+  border-bottom: 1px solid #3366FF;
 }
 
 .definitions .jumbotron.post {
@@ -45,9 +45,9 @@
 
 .definitions .jumbotron.post td {
   border-right: 1px solid #D39700;
-	border-left: 1px solid #D39700;
-	border-top: 1px solid #D39700;
-	border-bottom: 1px solid #D39700;
+  border-left: 1px solid #D39700;
+  border-top: 1px solid #D39700;
+  border-bottom: 1px solid #D39700;
 }
 
 .definitions .jumbotron.delete {
@@ -57,15 +57,17 @@
 
 .definitions .jumbotron.delete td {
   border-right: 1px solid #CC3300;
-	border-left: 1px solid #CC3300;
-	border-top: 1px solid #CC3300;
-	border-bottom: 1px solid #CC3300;
+  border-left: 1px solid #CC3300;
+  border-top: 1px solid #CC3300;
+  border-bottom: 1px solid #CC3300;
 }
 
 .definitions .jumbotron table {
-	text-align: left;
+  text-align: left;
+  float: left;
+  margin-right: 30px;
 }
 
 .definitions .jumbotron td {
-	padding: 10px 15px;
+  padding: 10px 15px;
 }

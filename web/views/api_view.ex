@@ -19,6 +19,18 @@ defmodule Documentr2.ApiView do
     |> Map.get(:paths)
   end
 
+  def get_responses(path) do
+    path
+    |> Documentr2.Repo.preload(:responses)
+    |> Map.get(:responses)
+  end
+
+  def get_parameters(path) do
+    path
+    |> Documentr2.Repo.preload(:parameters)
+    |> Map.get(:parameters)
+  end
+
   def get_method_class(type) do
     "method #{type}"
   end
