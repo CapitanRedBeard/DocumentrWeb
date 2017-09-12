@@ -33,7 +33,10 @@ defmodule Documentr2.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Documentr2 do
-  #   pipe_through :api
-  # end
+  scope "/v1/api", Documentr2 do
+    pipe_through :api
+
+    resources "/path", PathController
+
+  end
 end

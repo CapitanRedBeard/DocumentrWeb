@@ -1,7 +1,7 @@
 defmodule Documentr2.Path do
   use Documentr2.Web, :model
 
-  @derive {Poison.Encoder, only: [:route]}
+  @derive {Poison.Encoder, except: [:__meta__]}
   schema "paths" do
     belongs_to :api, Documentr2.Api
     field :route, :string
@@ -20,7 +20,7 @@ defmodule Documentr2.Path do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:route])
-    |> validate_required([:route])
+    |> cast(params, [:route, :type, :description, :produces])
+    |> validate_required([:route, :type])
   end
 end

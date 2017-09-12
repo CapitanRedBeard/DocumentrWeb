@@ -1,6 +1,7 @@
 defmodule Documentr2.Parameter do
   use Documentr2.Web, :model
 
+  @derive {Poison.Encoder, except: [:__meta__]}
   schema "parameters" do
     field :key, :string
     field :type, :string

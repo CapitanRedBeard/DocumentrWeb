@@ -1,6 +1,7 @@
 defmodule Documentr2.Responses do
   use Documentr2.Web, :model
 
+  @derive {Poison.Encoder, except: [:__meta__]}
   schema "responses" do
     field :code, :integer
     field :description, :string
