@@ -29,7 +29,7 @@ defmodule Documentr2.Router do
   scope "/api", Documentr2 do
     pipe_through :browser
 
-    resources "/", ApiController, only: [:index, :show]
+    resources "/", ApiController
   end
 
   # Other scopes may use custom stacks.

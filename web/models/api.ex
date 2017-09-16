@@ -15,7 +15,7 @@ defmodule Documentr2.Api do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:basePath, :definitions, :paths])
-    |> validate_required([:basePath, :definitions, :paths])
+    |> cast(params, [:basePath])
+    |> validate_required([:basePath])
   end
 end
