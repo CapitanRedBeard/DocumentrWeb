@@ -1,4 +1,9 @@
-<div class="jumbotron">
-  <h3><%= side_bar_title() %></h3>
-  <p><%= @apis %></p>
+<div >
+  <%= render "navigation.html", apis: @apis %>
+  <%= for api <- @apis do %>
+    <div>
+      <a href="api/<%= api.id%>/"><%= api.basePath %>: <%= api.id %></a>
+    </div>
+  <% end %>
+
 </div>

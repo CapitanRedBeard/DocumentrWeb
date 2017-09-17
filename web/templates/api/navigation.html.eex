@@ -1,0 +1,14 @@
+<div class="navbar">
+  <h1 class="header">
+    Documentr
+  </h1>
+  <select onchange="if (this.selectedIndex) window.location.href = '/api/' + this.selectedIndex;">
+    <%= for api <- @apis do %>
+      <option value="volvo">
+        <%= api.basePath %>: <%= api.id %>
+      </option>
+    <% end %>
+  </select>
+
+  <a href="/api/new" class="navbar_create">Create New API</a>
+</div>

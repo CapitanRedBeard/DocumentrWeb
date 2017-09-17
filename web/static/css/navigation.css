@@ -1,0 +1,12 @@
+.navbar {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar h1,
+.navbar a,
+.navbar select {
+  margin: 20px
+}
