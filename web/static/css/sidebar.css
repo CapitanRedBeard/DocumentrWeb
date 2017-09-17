@@ -2,7 +2,8 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 225px;
+  margin-left: -65px;
   padding: 10px;
   border-width: 5px solid red;
 }

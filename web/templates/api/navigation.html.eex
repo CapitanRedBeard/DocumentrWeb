@@ -1,7 +1,9 @@
 <div class="navbar">
-  <h1 class="header">
-    Documentr
-  </h1>
+  <a href="/api">
+    <h1 class="header">
+      Documentr
+    </h1>
+  </a>
   <select onchange="if (this.selectedIndex) window.location.href = '/api/' + this.selectedIndex;">
     <%= for api <- @apis do %>
       <option value="volvo">

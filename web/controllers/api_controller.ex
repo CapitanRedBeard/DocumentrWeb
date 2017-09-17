@@ -4,13 +4,12 @@ defmodule Documentr2.ApiController do
   alias Documentr2.Api
 
   def index(conn, _params) do
-    apis = Repo.all(Api) |> Repo.preload(:paths)
-    render conn, "index.html", apis: apis
+    render conn, "index.html", apis: all_apis()
   end
 
   def new(conn, _params) do
     changeset = Api.changeset(%Api{})
-    render conn, "new.html", changeset: changeset
+    render conn, "new.html", changeset: changeset, apis: all_apis()
   end
 
   def create(conn, %{"api" => api_params}) do
@@ -28,6 +27,11 @@ defmodule Documentr2.ApiController do
 
   def show(conn, %{"id" => id}) do
     api = Repo.get(Api, id) |> Repo.preload(:paths)
-    render conn, "show.html", api: api
+    render conn, "show.html", api: api, apis: all_apis()
+  end
+
+  defp all_apis() do
+    Repo.all(Api)
+      |> Repo.preload(:paths)
   end
 end

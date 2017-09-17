@@ -1,2 +1,3 @@
+<%= render "navigation.html", apis: @apis %>
 <%= render "sidebar.html", api: @api %>
 <%= render "definitions.html", api: @api %>

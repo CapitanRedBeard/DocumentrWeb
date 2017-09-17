@@ -1,9 +1,11 @@
 <%= render "navigation.html", apis: @apis %>
-<h1>New api</h1>
-<%= form_for @changeset, api_path(@conn, :create), fn f -> %>
-  <div class="form-group">
-    <%= text_input f, :basePath, placeholder: "Base Path",
-                              class: "form-  control" %>
-  </div>
-  <%= submit "Create new api", class: "btn btn-primary" %>
-<% end %>
+<div class="new-form jumbotron">
+  <h1>New api</h1>
+  <%= form_for @changeset, api_path(@conn, :create), fn f -> %>
+    <div class="form-group">
+      <%= text_input f, :basePath, placeholder: "Base Path",
+                                class: "form-  control" %>
+    </div>
+    <%= submit "Create new api", class: "btn btn-primary" %>
+  <% end %>
+</div>
