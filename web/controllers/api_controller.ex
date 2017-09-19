@@ -21,7 +21,7 @@ defmodule Documentr2.ApiController do
         |> redirect(to: api_path(conn, :index))
       {:error, changeset} ->
         conn
-        |> render("new.html", changeset: changeset)
+        |> render("new.html", changeset: changeset, apis: all_apis())
     end
   end
 
