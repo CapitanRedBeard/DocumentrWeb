@@ -8,12 +8,12 @@ defmodule Documentr2.ApiController do
   end
 
   def new(conn, _params) do
-    changeset = Api.changeset(%Api{})
+    changeset = Api.changeset(%Api{}, generate_uuid())
     render conn, "new.html", changeset: changeset, apis: all_apis()
   end
 
   def create(conn, %{"api" => api_params}) do
-    changeset = Api.changeset(%Api{}, api_params)
+    changeset = Api.changeset(%Api{}, Map.merge(api_params, generate_uuid()))
     case Repo.insert(changeset) do
       {:ok, api} ->
         conn
@@ -33,5 +33,9 @@ defmodule Documentr2.ApiController do
   defp all_apis() do
     Repo.all(Api)
       |> Repo.preload(:paths)
+  end
+
+  defp generate_uuid() do
+    %{"api_key" => UUID.uuid1()}
   end
 end

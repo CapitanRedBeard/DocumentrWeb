@@ -18,7 +18,7 @@ alias Documentr2.Api
 
 
 
-api = Repo.insert! %Api{basePath: "v1", name: "blog api"}
+api = Repo.insert! %Api{basePath: "v1", name: "blog api", api_key: UUID.uuid1()}
 
 account1 = Repo.insert! %Path{api_id: api.id, route: "/account", description: "Grabs the account", produces: "application/json", type: "get"}
 Repo.insert! %Return{path_id: account1.id, key: "account_id", type: "UUID"}
