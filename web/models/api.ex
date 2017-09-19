@@ -4,7 +4,7 @@ defmodule Documentr2.Api do
   @derive {Poison.Encoder, only: [:basePath, :definitions, :paths]}
   schema "apis" do
     field :basePath, :string
-    field :definitions, :string
+    field :name, :string
     has_many :paths, Documentr2.Path
 
     timestamps()
@@ -15,7 +15,7 @@ defmodule Documentr2.Api do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:basePath])
-    |> validate_required([:basePath])
+    |> cast(params, [:name], [:basePath])
+    |> validate_required([:name], [:basePath])
   end
 end

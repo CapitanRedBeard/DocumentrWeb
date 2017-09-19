@@ -7,7 +7,7 @@
   <select onchange="if (this.selectedIndex) window.location.href = '/api/' + this.selectedIndex;">
     <%= for api <- @apis do %>
       <option value="volvo">
-        <%= api.basePath %>: <%= api.id %>
+        <%= api.name %>: <%= api.id %>
       </option>
     <% end %>
   </select>
