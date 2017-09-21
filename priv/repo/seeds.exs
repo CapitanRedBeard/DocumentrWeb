@@ -20,7 +20,7 @@ alias Documentr2.Api
 
 api = Repo.insert! %Api{basePath: "v1", name: "blog api", api_key: UUID.uuid1()}
 
-account1 = Repo.insert! %Path{api_id: api.id, route: "/account", description: "Grabs the account", produces: "application/json", type: "get"}
+account1 = Repo.insert! %Path{api_id: api.id, route: "/account", description: "Grabs the account", response_type: "application/json", type: "get"}
 Repo.insert! %Return{path_id: account1.id, key: "account_id", type: "UUID"}
 Repo.insert! %Return{path_id: account1.id, key: "membership_name", type: "string"}
 Repo.insert! %Return{path_id: account1.id, key: "name", type: "string"}
@@ -28,19 +28,19 @@ Repo.insert! %Responses{path_id: account1.id, code: 200, description: "Successfu
 Repo.insert! %Responses{path_id: account1.id, code: 404, description: "Cannot find account"}
 Repo.insert! %Responses{path_id: account1.id, code: 400, description: "Invalid account id supplied"}
 
-account2 = Repo.insert! %Path{api_id: api.id, route: "/account", description: "Creates a new account", produces: "application/json", type: "post"}
+account2 = Repo.insert! %Path{api_id: api.id, route: "/account", description: "Creates a new account", response_type: "application/json", type: "post"}
 Repo.insert! %Parameter{path_id: account2.id, key: "membership_name", type: "string"}
 Repo.insert! %Parameter{path_id: account2.id, key: "name", type: "string"}
 Repo.insert! %Responses{path_id: account2.id, code: 200, description: "Successfully created an account"}
 Repo.insert! %Responses{path_id: account2.id, code: 400, description: "Invalid account id supplied"}
 
-account3 = Repo.insert! %Path{api_id: api.id, route: "/account", description: "Creates a new account", produces: "application/json", type: "put"}
+account3 = Repo.insert! %Path{api_id: api.id, route: "/account", description: "Creates a new account", response_type: "application/json", type: "put"}
 Repo.insert! %Parameter{path_id: account3.id, key: "membership_name", type: "string"}
 Repo.insert! %Parameter{path_id: account3.id, key: "name", type: "string"}
 Repo.insert! %Responses{path_id: account3.id, code: 200, description: "Successfully altered an account"}
 Repo.insert! %Responses{path_id: account3.id, code: 400, description: "Invalid account id supplied"}
 
-post1 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Grabs the post", produces: "application/json", type: "get"}
+post1 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Grabs the post", response_type: "application/json", type: "get"}
 Repo.insert! %Return{path_id: post1.id, key: "post_id", type: "UUID"}
 Repo.insert! %Return{path_id: post1.id, key: "membership_name", type: "string"}
 Repo.insert! %Return{path_id: post1.id, key: "name", type: "string"}
@@ -48,24 +48,24 @@ Repo.insert! %Responses{path_id: post1.id, code: 200, description: "Successfully
 Repo.insert! %Responses{path_id: post1.id, code: 404, description: "Cannot find post"}
 Repo.insert! %Responses{path_id: post1.id, code: 400, description: "Invalid post id supplied"}
 
-post2 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Creates a new post", produces: "application/json", type: "post"}
+post2 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Creates a new post", response_type: "application/json", type: "post"}
 Repo.insert! %Parameter{path_id: post2.id, key: "membership_name", type: "string"}
 Repo.insert! %Parameter{path_id: post2.id, key: "name", type: "string"}
 Repo.insert! %Responses{path_id: post2.id, code: 200, description: "Successfully created a post"}
 Repo.insert! %Responses{path_id: post2.id, code: 400, description: "Invalid post id supplied"}
 
-post3 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Creates a new post", produces: "application/json", type: "put"}
+post3 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Creates a new post", response_type: "application/json", type: "put"}
 Repo.insert! %Parameter{path_id: post3.id, key: "membership_name", type: "string"}
 Repo.insert! %Parameter{path_id: post3.id, key: "name", type: "string"}
 Repo.insert! %Responses{path_id: post3.id, code: 200, description: "Successfully altered a post"}
 Repo.insert! %Responses{path_id: post3.id, code: 400, description: "Invalid post id supplied"}
 
-post4 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Creates a new post", produces: "application/json", type: "delete"}
+post4 = Repo.insert! %Path{api_id: api.id, route: "/post", description: "Creates a new post", response_type: "application/json", type: "delete"}
 Repo.insert! %Parameter{path_id: post4.id, key: "post_id", type: "string"}
 Repo.insert! %Responses{path_id: post4.id, code: 200, description: "Successfully deleted a post"}
 Repo.insert! %Responses{path_id: post4.id, code: 404, description: "Cannot find post"}
 
-comment1 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Grabs the comment", produces: "application/json", type: "get"}
+comment1 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Grabs the comment", response_type: "application/json", type: "get"}
 Repo.insert! %Return{path_id: comment1.id, key: "comment_id", type: "UUID"}
 Repo.insert! %Return{path_id: comment1.id, key: "membership_name", type: "string"}
 Repo.insert! %Return{path_id: comment1.id, key: "name", type: "string"}
@@ -73,19 +73,19 @@ Repo.insert! %Responses{path_id: comment1.id, code: 200, description: "Successfu
 Repo.insert! %Responses{path_id: comment1.id, code: 404, description: "Cannot find comment"}
 Repo.insert! %Responses{path_id: comment1.id, code: 400, description: "Invalid comment id supplied"}
 
-comment2 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Creates a new comment", produces: "application/json", type: "post"}
+comment2 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Creates a new comment", response_type: "application/json", type: "post"}
 Repo.insert! %Parameter{path_id: comment2.id, key: "membership_name", type: "string"}
 Repo.insert! %Parameter{path_id: comment2.id, key: "name", type: "string"}
 Repo.insert! %Responses{path_id: comment2.id, code: 200, description: "Successfully created a comment"}
 Repo.insert! %Responses{path_id: comment2.id, code: 400, description: "Invalid comment id supplied"}
 
-comment3 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Creates a new comment", produces: "application/json", type: "put"}
+comment3 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Creates a new comment", response_type: "application/json", type: "put"}
 Repo.insert! %Parameter{path_id: comment3.id, key: "membership_name", type: "string"}
 Repo.insert! %Parameter{path_id: comment3.id, key: "name", type: "string"}
 Repo.insert! %Responses{path_id: comment3.id, code: 200, description: "Successfully altered a comment"}
 Repo.insert! %Responses{path_id: comment3.id, code: 400, description: "Invalid comment id supplied"}
 
-comment4 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Creates a new comment", produces: "application/json", type: "delete"}
+comment4 = Repo.insert! %Path{api_id: api.id, route: "/comment", description: "Creates a new comment", response_type: "application/json", type: "delete"}
 Repo.insert! %Parameter{path_id: comment4.id, key: "comment_id", type: "string"}
 Repo.insert! %Responses{path_id: comment4.id, code: 200, description: "Successfully deleted a comment"}
 Repo.insert! %Responses{path_id: comment4.id, code: 404, description: "Cannot find comment"}

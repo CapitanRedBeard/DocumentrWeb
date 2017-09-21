@@ -13,7 +13,7 @@ defmodule Documentr2.PathView do
     %{id: path.id,
       route: path.route,
       description: path.description,
-      produces: path.produces,
+      response_type: path.response_type,
       type: path.type,
       responses: path.responses,
       parameters: path.parameters,

@@ -6,7 +6,7 @@ defmodule Documentr2.Path do
     belongs_to :api, Documentr2.Api
     field :route, :string
     field :description, :string
-    field :produces, :string
+    field :response_type, :string
     field :type, :string
     has_many :responses, Documentr2.Responses
     has_many :parameters, Documentr2.Parameter
@@ -20,7 +20,7 @@ defmodule Documentr2.Path do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:api_id, :route, :type, :description, :produces])
+    |> cast(params, [:api_id, :route, :type, :description, :response_type])
     |> validate_required([:api_id, :route, :type])
     |> assoc_constraint(:api_id)
   end

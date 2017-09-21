@@ -11,6 +11,7 @@ defmodule Documentr2.PathController do
   end
 
   def create(conn, %{"path" => path_params}) do
+    # parse(path_params)
     path = %Path{} |> Repo.preload(:parameters) |> Repo.preload(:responses) |> Repo.preload(:returns)
     changeset = Path.changeset(path, path_params)
 

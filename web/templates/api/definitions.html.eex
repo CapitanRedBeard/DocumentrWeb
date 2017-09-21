@@ -3,7 +3,7 @@
   <h4>Api Key: <%= @api.api_key %></h4>
   <%= for path <- get_paths(@api) do %>
     <div class="jumbotron <%= get_definition_container_class(path.type) %>">
-      <h3 name="<%= path.id%>"><%= path.type %> - <%=path.route%> (<%=path.produces%>)</h3>
+      <h3 name="<%= path.id%>"><%= path.type %> - <%=path.route%> (<%=path.response_type%>)</h3>
       <p><%= path.description%></p>
       <table>
         <thead>
