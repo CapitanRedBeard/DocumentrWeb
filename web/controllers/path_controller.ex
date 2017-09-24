@@ -1,7 +1,9 @@
 defmodule Documentr2.PathController do
+  require Logger
   use Documentr2.Web, :controller
 
   alias Documentr2.Path
+  alias Documentr2.Api
 
   plug :scrub_params, "path" when action in [:create, :update]
 
@@ -11,9 +13,8 @@ defmodule Documentr2.PathController do
   end
 
   def create(conn, %{"path" => path_params}) do
-    # parse(path_params)
     path = %Path{} |> Repo.preload(:parameters) |> Repo.preload(:responses) |> Repo.preload(:returns)
-    changeset = Path.changeset(path, path_params)
+    changeset = Path.changeset(path, swap_out_key_for_id(path_params))
 
     case Repo.insert(changeset) do
       {:ok, path} ->
@@ -56,4 +57,12 @@ defmodule Documentr2.PathController do
 
     send_resp(conn, :no_content, "")
   end
+
+  defp swap_out_key_for_id(path_params) do
+    api = Repo.get_by(Api, api_key: path_params["api_key"])
+    params = Map.merge(path_params, %{"api_id"  => api.id})
+    params = Map.delete(params, "api_key")
+    params
+  end
+
 end

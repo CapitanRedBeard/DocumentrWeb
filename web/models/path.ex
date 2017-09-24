@@ -20,8 +20,7 @@ defmodule Documentr2.Path do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:api_id, :route, :type, :description, :response_type])
-    |> validate_required([:api_id, :route, :type])
-    |> assoc_constraint(:api_id)
+    |> cast(params, [:route, :type, :description, :response_type, :api_id])
+    |> validate_required([:route, :type])
   end
 end
