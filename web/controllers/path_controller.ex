@@ -8,12 +8,12 @@ defmodule Documentr2.PathController do
   plug :scrub_params, "path" when action in [:create, :update]
 
   def index(conn, _params) do
-    paths = Repo.all(Path) |> Repo.preload(:parameters) |> Repo.preload(:responses) |> Repo.preload(:returns)
+    paths = Repo.all(Path) |> Repo.preload(:parameters) |> Repo.preload(:returns)
     render(conn, "index.json", paths: paths)
   end
 
   def create(conn, %{"path" => path_params}) do
-    path = %Path{} |> Repo.preload(:parameters) |> Repo.preload(:responses) |> Repo.preload(:returns)
+    path = %Path{} |> Repo.preload(:parameters) |> Repo.preload(:returns)
     changeset = Path.changeset(path, swap_out_key_for_id(path_params))
 
     case Repo.insert(changeset) do
@@ -30,12 +30,12 @@ defmodule Documentr2.PathController do
   end
 
   def show(conn, %{"id" => id}) do
-    path = Repo.get!(Path, id) |> Repo.preload(:parameters) |> Repo.preload(:responses) |> Repo.preload(:returns)
+    path = Repo.get!(Path, id) |> Repo.preload(:parameters) |> Repo.preload(:returns)
     render(conn, "show.json", path: path)
   end
 
   def update(conn, %{"id" => id, "path" => path_params}) do
-    path = Repo.get!(Path, id) |> Repo.preload(:parameters) |> Repo.preload(:responses) |> Repo.preload(:returns)
+    path = Repo.get!(Path, id) |> Repo.preload(:parameters) |> Repo.preload(:returns)
     changeset = Path.changeset(path, path_params)
 
     case Repo.update(changeset) do

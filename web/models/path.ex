@@ -4,11 +4,13 @@ defmodule Documentr2.Path do
   @derive {Poison.Encoder, except: [:__meta__]}
   schema "paths" do
     belongs_to :api, Documentr2.Api
-    field :route, :string
+    field :url, :string
     field :description, :string
     field :response_type, :string
-    field :type, :string
-    has_many :responses, Documentr2.Responses
+    field :request_type, :string
+    field :request_payload, :string
+    field :method, :string
+    field :response_payload, :string
     has_many :parameters, Documentr2.Parameter
     has_many :returns, Documentr2.Parameter
 

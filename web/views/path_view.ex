@@ -11,11 +11,13 @@ defmodule Documentr2.PathView do
 
   def render("path.json", %{path: path}) do
     %{id: path.id,
-      route: path.route,
+      url: path.url,
       description: path.description,
       response_type: path.response_type,
-      type: path.type,
-      responses: path.responses,
+      request_type: path.request_type,
+      method: path.method,
+      response_payload: path.response_payload,
+      request_payload: path.request_payload,
       parameters: path.parameters,
       returns: path.returns}
   end
