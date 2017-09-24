@@ -2,25 +2,9 @@
   <h2><%= @api.name %></h2>
   <h4>Api Key: <%= @api.api_key %></h4>
   <%= for path <- get_paths(@api) do %>
-    <div class="jumbotron <%= get_definition_container_class(path.type) %>">
-      <h3 name="<%= path.id%>"><%= path.type %> - <%=path.route%> (<%=path.response_type%>)</h3>
+    <div class="jumbotron <%= get_definition_container_class(path.method) %>">
+      <h3 name="<%= path.id%>"><%= path.method %> - <%=path.url%> (<%=path.response_type%>)</h3>
       <p><%= path.description%></p>
-      <table>
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= for response <- get_responses(path) do %>
-            <tr>
-              <td><%= response.code%></td>
-              <td><%= response.description%></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
 
       <table>
         <thead>

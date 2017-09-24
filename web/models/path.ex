@@ -22,7 +22,7 @@ defmodule Documentr2.Path do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:route, :type, :description, :response_type, :api_id])
-    |> validate_required([:route, :type])
+    |> cast(params, [:url, :method, :description, :response_type, :api_id])
+    |> validate_required([:url, :method])
   end
 end
