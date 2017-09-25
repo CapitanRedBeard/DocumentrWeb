@@ -4,7 +4,7 @@ defmodule Documentr2.Parameter do
   @derive {Poison.Encoder, except: [:__meta__]}
   schema "parameters" do
     field :key, :string
-    field :type, :string
+    field :value, :string
     belongs_to :path, Documentr2.Path
 
     timestamps()
@@ -15,7 +15,7 @@ defmodule Documentr2.Parameter do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:key, :type])
-    |> validate_required([:key, :type])
+    |> cast(params, [:key, :value])
+    |> validate_required([:key, :value])
   end
 end

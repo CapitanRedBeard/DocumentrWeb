@@ -17,28 +17,12 @@
           <%= for parameter <- get_parameters(path) do %>
             <tr>
               <td><%= parameter.key%></td>
-              <td><%= parameter.type%></td>
+              <td><%= parameter.value%></td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Returns</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= for return <- get_returns(path) do %>
-            <tr>
-              <td><%= return.key%></td>
-              <td><%= return.type%></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
     </div>
   <% end %>
 </div>

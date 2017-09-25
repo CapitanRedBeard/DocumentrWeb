@@ -65,4 +65,16 @@ defmodule Documentr2.PathController do
     params
   end
 
+  defp has_params(url) do
+    paramsString = Enum.at(String.split(url, "?"),1)
+    if paramsString do
+      true
+    end
+      false
+  end
+
+  defp parse_url(url) do
+    paramsList = String.split(Enum.at(String.split(url, "?"),1), "&")
+    Enum.map(paramList, fn(param) -> {Enum.at(String.split(param, "="),0), Enum.at(String.split(param, "="),1)} end)
+  end
 end
