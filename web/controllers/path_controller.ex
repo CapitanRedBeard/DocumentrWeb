@@ -4,6 +4,7 @@ defmodule Documentr2.PathController do
 
   alias Documentr2.Path
   alias Documentr2.Api
+  alias Documentr2.Parameter
 
   plug :scrub_params, "path" when action in [:create, :update]
 
@@ -16,8 +17,10 @@ defmodule Documentr2.PathController do
     path = %Path{} |> Repo.preload(:parameters) |> Repo.preload(:returns)
     changeset = Path.changeset(path, swap_out_key_for_id(path_params))
 
+
     case Repo.insert(changeset) do
       {:ok, path} ->
+        handle_params(path)
         conn
         |> put_status(:created)
         |> put_resp_header("location", path_path(conn, :show, path))
@@ -65,16 +68,19 @@ defmodule Documentr2.PathController do
     params
   end
 
-  defp has_params(url) do
-    paramsString = Enum.at(String.split(url, "?"),1)
+  defp handle_params(path) do
+    Logger.debug "🙏 Handle_params id: #{inspect(path.id)}  url: #{inspect(path.url)}"
+    paramsString = Enum.at(String.split(path.url, "?"),1)
     if paramsString do
-      true
+      Logger.debug "🙏🙏 paramsString: #{inspect(paramsString)}"
+      paramsList = String.split(paramsString, "&")
+      Enum.map(paramsList, fn(param) ->
+        paramString = String.split(param, "=")
+        paramMap = %{path_id: path.id, key: Enum.at(paramString,0), value: Enum.at(paramString,1)}
+        changeset = Parameter.changeset(%Parameter{}, paramMap)
+        Logger.debug "🙏🙏🙏 changeset: #{inspect(changeset)}"
+        Repo.insert(changeset)
+      end)
     end
-      false
-  end
-
-  defp parse_url(url) do
-    paramsList = String.split(Enum.at(String.split(url, "?"),1), "&")
-    Enum.map(paramList, fn(param) -> {Enum.at(String.split(param, "="),0), Enum.at(String.split(param, "="),1)} end)
   end
 end

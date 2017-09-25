@@ -15,7 +15,7 @@ defmodule Documentr2.Parameter do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:key, :value])
+    |> cast(params, [:key, :value, :path_id])
     |> validate_required([:key, :value])
   end
 end
