@@ -19,6 +19,7 @@
 }
 
 .sidebar-row-route {
+  word-break: break-word;
   font-size: 16px;
   display: inline-block;
   margin-left: 10px;
