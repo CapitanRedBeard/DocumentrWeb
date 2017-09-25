@@ -69,16 +69,13 @@ defmodule Documentr2.PathController do
   end
 
   defp handle_params(path) do
-    Logger.debug "🙏 Handle_params id: #{inspect(path.id)}  url: #{inspect(path.url)}"
     paramsString = Enum.at(String.split(path.url, "?"),1)
     if paramsString do
-      Logger.debug "🙏🙏 paramsString: #{inspect(paramsString)}"
       paramsList = String.split(paramsString, "&")
       Enum.map(paramsList, fn(param) ->
         paramString = String.split(param, "=")
         paramMap = %{path_id: path.id, key: Enum.at(paramString,0), value: Enum.at(paramString,1)}
         changeset = Parameter.changeset(%Parameter{}, paramMap)
-        Logger.debug "🙏🙏🙏 changeset: #{inspect(changeset)}"
         Repo.insert(changeset)
       end)
     end
