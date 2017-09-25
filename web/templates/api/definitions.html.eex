@@ -3,8 +3,10 @@
   <h4>Api Key: <%= @api.api_key %></h4>
   <%= for path <- get_paths(@api) do %>
     <div class="jumbotron <%= get_definition_container_class(path.method) %>">
-      <h3 name="<%= path.id%>"><%= path.method %> - <%=path.url%> (<%=path.response_type%>)</h3>
+      <h3 name="<%= path.id%>"><%= String.upcase(path.method) %> <%= path.url %></h3>
       <p><%= path.description%></p>
+      <h6 name="<%= path.id%>">Response Type: <%= path.response_type %></h3>
+      <h6 name="<%= path.id%>">Request Type: <%= path.request_type %></h3>
 
       <table>
         <thead>
