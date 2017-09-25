@@ -5,9 +5,12 @@
     </h1>
   </a>
   <select onchange="if (this.selectedIndex) window.location.href = '/api/' + this.selectedIndex;">
+    <option selected>
+      Select Api
+    </option>
     <%= for api <- @apis do %>
       <option value="volvo">
-        <%= api.name %>: <%= api.id %>
+        <%= api.name %>
       </option>
     <% end %>
   </select>

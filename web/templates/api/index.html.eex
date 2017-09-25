@@ -2,7 +2,7 @@
   <%= render "navigation.html", apis: @apis %>
   <%= for api <- @apis do %>
     <div>
-      <a href="api/<%= api.id%>/"><%= api.name %>: <%= api.id %></a>
+      <a href="api/<%= api.id%>/"><%= api.name %>: <%= api.api_key %></a>
     </div>
   <% end %>
 
