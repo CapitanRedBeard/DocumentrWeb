@@ -1,9 +1,8 @@
 <div class="sidebar">
   <h3><%= side_bar_title() %></h3>
-  <%= for path <- get_paths(@api) do %>
+  <%= for {unique_key, unique_value} <- get_paths_by_unique_url(@api) do %>
     <div class="sidebar-row">
-      <%= render "method_icon.html", method: path.method %>
-      <a href="#<%= path.id%>" class="sidebar-row-route"><%= path.url%></a>
+      <a href="#<%= unique_key%>" class="sidebar-row-route"><%= unique_key%></a>
     </div>
   <% end %>
 </div>

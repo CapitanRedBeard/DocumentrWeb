@@ -14,9 +14,9 @@ defmodule Documentr2.ApiView do
     apis
   end
 
-  def get_paths(api) do
-    api
-    |> Map.get(:paths)
+  def get_paths_by_unique_url(api) do
+    paths = api |> Map.get(:paths)
+    Enum.group_by(paths, fn x -> Enum.join([x.method, Enum.at(String.split(x.url, "?"),0)], " ") end)
   end
 
   def get_parameters(path) do
@@ -35,7 +35,8 @@ defmodule Documentr2.ApiView do
     "method #{type}"
   end
 
-  def get_definition_container_class(type) do
+  def get_definition_container_class(unique_url) do
+    type = Enum.at(String.split(unique_url, " "),0)
     "#{type}"
   end
 

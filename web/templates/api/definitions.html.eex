@@ -1,30 +1,34 @@
 <div class="definitions">
   <h2><%= @api.name %></h2>
   <h4>Api Key: <%= @api.api_key %></h4>
-  <%= for path <- get_paths(@api) do %>
-    <div class="jumbotron <%= get_definition_container_class(path.method) %>">
-      <h3 name="<%= path.id%>"><%= String.upcase(path.method) %> <%= path.url %></h3>
-      <p><%= path.description%></p>
-      <h6 name="<%= path.id%>">Response Type: <%= path.response_type %></h3>
-      <h6 name="<%= path.id%>">Request Type: <%= path.request_type %></h3>
+  <%= for {unique_key, unique_value} <- get_paths_by_unique_url(@api) do %>
+    <a name="<%=unique_key%>"></a>
+    <div class="jumbotron <%= get_definition_container_class(unique_key) %>">
+    <%= for path <- unique_value do %>
+      <h3 ><%= path.url %></h3>
+      <div >
+        <p><%= path.description%></p>
+        <h6 name="<%= path.id%>">Response Type: <%= path.response_type %></h3>
+        <h6 name="<%= path.id%>">Request Type: <%= path.request_type %></h3>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Parameter</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= for parameter <- get_parameters(path) do %>
+        <table>
+          <thead>
             <tr>
-              <td><%= parameter.key%></td>
-              <td><%= parameter.value%></td>
+              <th>Parameter</th>
+              <th>Type</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-
+          </thead>
+          <tbody>
+            <%= for parameter <- get_parameters(path) do %>
+              <tr>
+                <td><%= parameter.key%></td>
+                <td><%= parameter.value%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% end %>
     </div>
   <% end %>
 </div>
