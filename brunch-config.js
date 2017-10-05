@@ -68,6 +68,16 @@ exports.config = {
     globals: {
         $: 'jquery',
         jQuery: 'jquery'
-    }
+    },
+    whitelist: [
+      "jquery",
+      "tether",
+      "bootstrap",
+      "bootstrap-select",
+      "material-design-lite",
+      "highlight.js",
+      "phoenix",
+      "phoenix_html"
+    ]
   }
 };

@@ -12,10 +12,12 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
+import $ from "jquery"
 
-// Import local files
-//
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
+global.jQuery = require("jquery")
+global.bootstrap = require("bootstrap")
 
-// import socket from "./socket"
+$(document).ready(() => {
+  // This is optional if you want to do it on 'something other than default'
+  $('[data-toggle="collapse"]').collapse()
+})

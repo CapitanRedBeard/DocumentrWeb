@@ -5,45 +5,47 @@
     <a name="<%=unique_key%>"></a>
     <div class="jumbotron <%= get_definition_container_class(unique_key) %>">
     <%= for path <- unique_value do %>
-      <h3 ><%= path.url %></h3>
-      <div >
-        <p><%= path.description%></p>
-        <div class="jsonContainer">
-          <h5 name="<%= path.id%>">Request (<%= path.request_type %>) </h5>
-          <%= if path.request_payload do %>
-            <code>
-              <%= path.request_payload%>
-            </code>
+      <h3 data-toggle="collapse" href="#<%= path.id %>" aria-expanded="false" aria-controls="<%= path.id %>"><%= path.url %></h3>
+      <div class="collapse" id="<%= path.id %>">
+        <div class="well">
+          <p><%= path.description%></p>
+          <div class="jsonContainer">
+            <h5 name="<%= path.id%>">Request (<%= path.request_type %>) </h5>
+            <%= if path.request_payload do %>
+              <code>
+                <%= path.request_payload%>
+              </code>
+            <% end %>
+          </div>
+
+          <%= if path.response_payload do %>
+            <div class="jsonContainer">
+              <h5 name="<%= path.id%>">Response (<%= path.response_type %>) </h5>
+              <code>
+                <%= path.response_payload%>
+              </code>
+            </div>
+          <% end %>
+
+          <%= if get_parameters(path) do %>
+            <table>
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= for parameter <- get_parameters(path) do %>
+                  <tr>
+                    <td><%= parameter.key%></td>
+                    <td><%= parameter.value%></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           <% end %>
         </div>
-
-        <%= if path.response_payload do %>
-          <div class="jsonContainer">
-            <h5 name="<%= path.id%>">Response (<%= path.response_type %>) </h5>
-            <code>
-              <%= path.response_payload%>
-            </code>
-          </div>
-        <% end %>
-
-        <%= if get_parameters(path) do %>
-          <table>
-            <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Type</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= for parameter <- get_parameters(path) do %>
-                <tr>
-                  <td><%= parameter.key%></td>
-                  <td><%= parameter.value%></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        <% end %>
       </div>
       <% end %>
     </div>
