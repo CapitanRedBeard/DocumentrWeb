@@ -71,4 +71,9 @@
 
 .definitions .jumbotron td {
   padding: 10px 15px;
+  min-width: 200px;
+}
+
+.definitions .jumbotron .jsonContainer {
+  margin-bottom: 20px;
 }

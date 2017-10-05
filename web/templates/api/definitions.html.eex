@@ -8,25 +8,42 @@
       <h3 ><%= path.url %></h3>
       <div >
         <p><%= path.description%></p>
-        <h6 name="<%= path.id%>">Response Type: <%= path.response_type %></h3>
-        <h6 name="<%= path.id%>">Request Type: <%= path.request_type %></h3>
+        <div class="jsonContainer">
+          <h5 name="<%= path.id%>">Request (<%= path.request_type %>) </h5>
+          <%= if path.request_payload do %>
+            <code>
+              <%= path.request_payload%>
+            </code>
+          <% end %>
+        </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Parameter</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= for parameter <- get_parameters(path) do %>
+        <%= if path.response_payload do %>
+          <div class="jsonContainer">
+            <h5 name="<%= path.id%>">Response (<%= path.response_type %>) </h5>
+            <code>
+              <%= path.response_payload%>
+            </code>
+          </div>
+        <% end %>
+
+        <%= if get_parameters(path) do %>
+          <table>
+            <thead>
               <tr>
-                <td><%= parameter.key%></td>
-                <td><%= parameter.value%></td>
+                <th>Parameter</th>
+                <th>Type</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <%= for parameter <- get_parameters(path) do %>
+                <tr>
+                  <td><%= parameter.key%></td>
+                  <td><%= parameter.value%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
       </div>
       <% end %>
     </div>

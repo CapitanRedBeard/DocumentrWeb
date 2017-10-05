@@ -44,6 +44,11 @@ defmodule Documentr2.ApiView do
     Map.has_key?(dict, field)
   end
 
+
+  def pretty_print(json_string) do
+    Regex.replace(~r/([a-z0-9]+):/, json_string, "\"\\1\":") |> String.replace("'", "\"") |> Poison.decode!
+  end
+
 end
 
 #
